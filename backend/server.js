@@ -22,7 +22,9 @@ app.use(passport.initialize());
 
 // Routes
 app.use('/api/auth', require('./routes/auth'));
-app.use('/api/auth/google', require('./routes/google'));
+if (process.env.GOOGLE_CLIENT_ID) {
+    app.use('/api/auth/google', require('./routes/google'));
+}
 app.use('/api/stations', require('./routes/stations'));
 app.use('/api/bookings', require('./routes/bookings'));
 app.use('/api/profile', require('./routes/profile'));

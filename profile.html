@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - ZENVO⚡T</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css"> 
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light custom-navbar">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">ZENVO⚡T</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="stations.html">Stations</a></li>
+                    <li class="nav-item"><a class="nav-link" href="booking.html">Book Now</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="profile.html">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h1 class="display-5 fw-bold mb-3">My Profile</h1>
+                    <p class="lead">Manage your account and view booking history</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="profile-avatar">
+                        <i class="fas fa-user-circle fa-5x text-primary"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Content -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Profile Info -->
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-user-circle fa-4x text-primary mb-3"></i>
+                            <h5 class="card-title" id="userName">John Doe</h5>
+                            <p class="text-muted" id="userEmail">john.doe@email.com</p>
+                            <p class="text-muted">+91 9876543210</p>
+                            <button class="btn btn-outline-primary btn-sm">Edit Profile</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Stats -->
+                    <div class="card mt-4">
+                        <div class="card-header">
+                            <h6 class="mb-0">Quick Stats</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Total Bookings:</span>
+                                <strong>24</strong>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Hours Charged:</span>
+                                <strong>48h</strong>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Money Saved:</span>
+                                <strong>₹2,400</strong>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span>CO₂ Reduced:</span>
+                                <strong>120kg</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Main Content -->
+                <div class="col-lg-8">
+                    <!-- Tabs -->
+                    <ul class="nav nav-tabs" id="profileTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="bookings-tab" data-bs-toggle="tab" data-bs-target="#bookings" type="button">
+                                <i class="fas fa-calendar-alt"></i> My Bookings
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="vehicles-tab" data-bs-toggle="tab" data-bs-target="#vehicles" type="button">
+                                <i class="fas fa-car"></i> My Vehicles
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="wallet-tab" data-bs-toggle="tab" data-bs-target="#wallet" type="button">
+                                <i class="fas fa-wallet"></i> My Wallet
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="payments-tab" data-bs-toggle="tab" data-bs-target="#payments" type="button">
+                                <i class="fas fa-credit-card"></i> Payment History
+                            </button>
+                        </li>
+                    </ul>
+                    <!-- Tab Content -->
+                    <div class="tab-content" id="profileTabsContent">
+                        <!-- Bookings Tab -->
+                        <div class="tab-pane fade show active" id="bookings" role="tabpanel">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h6 class="mb-0">Recent Bookings</h6>
+                                    <span class="badge bg-primary">3 Active</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="booking-item border-bottom pb-3 mb-3">
+                                        <div class="d-flex justify-content-between align-items-start">
+                                            <div>
+                                                <h6 class="mb-1">Central Mall Station</h6>
+                                                <p class="text-muted mb-1">Dec 20, 2024 - 2:00 PM</p>
+                                                <small class="text-success">Duration: 2 hours</small>
+                                            </div>
+                                            <span class="badge bg-success">Confirmed</span>
+                                        </div>
+                                    </div>
+                                    <div class="booking-item border-bottom pb-3 mb-3">
+                                        <div class="d-flex justify-content-between align-items-start">
+                                            <div>
+                                                <h6 class="mb-1">Tech Park Station</h6>
+                                                <p class="text-muted mb-1">Dec 18, 2024 - 10:00 AM</p>
+                                                <small class="text-info">Duration: 3 hours</small>
+                                            </div>
+                                            <span class="badge bg-secondary">Completed</span>
+                                        </div>
+                                    </div>
+                                    <div class="booking-item">
+                                        <div class="d-flex justify-content-between align-items-start">
+                                            <div>
+                                                <h6 class="mb-1">Airport Station</h6>
+                                                <p class="text-muted mb-1">Dec 15, 2024 - 6:00 PM</p>
+                                                <small class="text-warning">Duration: 1 hour</small>
+                                            </div>
+                                            <span class="badge bg-secondary">Completed</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="vehicles" role="tabpanel">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h6 class="mb-0">My Vehicles</h6>
+                                    <button class="btn btn-primary btn-sm">Add Vehicle</button>
+                                </div>
+                                <div class="card-body">
+                                    <div class="vehicle-item border-bottom pb-3 mb-3">
+                                        <div class="d-flex align-items-center">
+                                            <i class="fas fa-car fa-2x text-primary me-3"></i>
+                                            <div>
+                                                <h6 class="mb-1">Tesla Model 3</h6>
+                                                <p class="text-muted mb-0">KA 01 AB 1234</p>
+                                                <small class="text-success">Primary Vehicle</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="vehicle-item">
+                                        <div class="d-flex align-items-center">
+                                            <i class="fas fa-car fa-2x text-secondary me-3"></i>
+                                            <div>
+                                                <h6 class="mb-1">Tata Nexon EV</h6>
+                                                <p class="text-muted mb-0">KA 02 CD 5678</p>
+                                                <small class="text-muted">Secondary Vehicle</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Wallet Tab -->
+                        <div class="tab-pane fade" id="wallet" role="tabpanel">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="card wallet-card">
+                                        <div class="card-header bg-success text-white">
+                                            <h6 class="mb-0"><i class="fas fa-wallet"></i> Wallet Balance</h6>
+                                        </div>
+                                        <div class="card-body text-center">
+                                            <h2 class="text-success mb-3" id="walletBalance">₹1,250</h2>
+                                            <div class="d-grid gap-2">
+                                                <button class="btn btn-success" onclick="showRechargeModal()">
+                                                    <i class="fas fa-plus"></i> Add Money
+                                                </button>
+                                                <button class="btn btn-outline-success" onclick="showWithdrawModal()">
+                                                    <i class="fas fa-minus"></i> Withdraw Money
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h6 class="mb-0"><i class="fas fa-chart-line"></i> Quick Stats</h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between mb-2">
+                                                <span>Total Recharged:</span>
+                                                <strong class="text-success">₹5,000</strong>
+                                            </div>
+                                            <div class="d-flex justify-content-between mb-2">
+                                                <span>Total Spent:</span>
+                                                <strong class="text-primary">₹3,750</strong>
+                                            </div>
+                                            <div class="d-flex justify-content-between mb-2">
+                                                <span>Total Refunds:</span>
+                                                <strong class="text-warning">₹320</strong>
+                                            </div>
+                                            <div class="d-flex justify-content-between">
+                                                <span>Savings:</span>
+                                                <strong class="text-info">₹1,570</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mt-4">
+                                <div class="card-header">
+                                    <h6 class="mb-0"><i class="fas fa-history"></i> Recent Transactions</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="transaction-item">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="d-flex align-items-center">
+                                                <i class="fas fa-times-circle text-danger me-3"></i>
+                                                <div>
+                                                    <h6 class="mb-1">Booking Cancelled - Central Mall</h6>
+                                                    <small class="text-muted">Dec 19, 2024 - 3:30 PM</small>
+                                                </div>
+                                            </div>
+                                            <div class="text-end">
+                                                <div class="text-success fw-bold">+₹72 <small>(Refund)</small></div>
+                                                <small class="text-muted">Original: ₹90, Deducted: ₹18</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="transaction-item">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="d-flex align-items-center">
+                                                <i class="fas fa-plus-circle text-success me-3"></i>
+                                                <div>
+                                                    <h6 class="mb-1">Wallet Recharge</h6>
+                                                    <small class="text-muted">Dec 18, 2024 - 10:15 AM</small>
+                                                </div>
+                                            </div>
+                                            <div class="text-end">
+                                                <div class="text-success fw-bold">+₹500</div>
+                                                <small class="text-muted">UPI Payment</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="transaction-item">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="d-flex align-items-center">
+                                                <i class="fas fa-charging-station text-primary me-3"></i>
+                                                <div>
+                                                    <h6 class="mb-1">Charging Payment - Tech Park</h6>
+                                                    <small class="text-muted">Dec 17, 2024 - 2:00 PM</small>
+                                                </div>
+                                            </div>
+                                            <div class="text-end">
+                                                <div class="text-danger fw-bold">-₹130</div>
+                                                <small class="text-muted">3 hours charging</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Payments Tab -->
+                        <div class="tab-pane fade" id="payments" role="tabpanel">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6 class="mb-0">Payment History</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="payment-item d-flex justify-content-between align-items-center border-bottom pb-2 mb-2">
+                                        <div>
+                                            <h6 class="mb-1">Central Mall Station - CANCELLED</h6>
+                                            <small class="text-muted">Dec 19, 2024</small>
+                                        </div>
+                                        <div class="text-end">
+                                            <div>
+                                                <strong class="text-danger">₹90</strong> <small>(Original)</small><br>
+                                                <strong class="text-success">+₹72</strong> <small>(Refund 80%)</small><br>
+                                                <strong class="text-warning">-₹18</strong> <small>(Deducted 20%)</small>
+                                            </div>
+                                            <small class="text-muted">Refunded to Wallet</small>
+                                        </div>
+                                    </div>
+                                    <div class="payment-item d-flex justify-content-between align-items-center border-bottom pb-2 mb-2">
+                                        <div>
+                                            <h6 class="mb-1">Tech Park Station</h6>
+                                            <small class="text-muted">Dec 15, 2024</small>
+                                        </div>
+                                        <div class="text-end">
+                                            <strong class="text-success">₹130</strong>
+                                            <br>
+                                            <small class="text-muted">Paid from Wallet</small>
+                                        </div>
+                                    </div>
+                                    <div class="payment-item d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">Airport Station</h6>
+                                            <small class="text-muted">Dec 12, 2024</small>
+                                        </div>
+                                        <div class="text-end">
+                                            <strong class="text-success">₹50</strong>
+                                            <br>
+                                            <small class="text-muted">Paid from Wallet</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p>&copy; 2025 ZENVO⚡T. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        // Check authentication after page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const user = localStorage.getItem('zenvo_user');
+            if (!user) {
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            try {
+                const userData = JSON.parse(user);
+                if (!userData.isLoggedIn) {
+                    window.location.href = 'login.html';
+                    return;
+                }
+            } catch (e) {
+                localStorage.removeItem('zenvo_user');
+                window.location.href = 'login.html';
+                return;
+            }
+        });
+        
+        function logout() {
+            localStorage.removeItem('zenvo_user');
+            localStorage.removeItem('zenvo_remember');
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>

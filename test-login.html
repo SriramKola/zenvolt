@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Login</title>
+</head>
+<body>
+    <h2>Test Login</h2>
+    <form id="testForm">
+        <input type="email" id="email" placeholder="Email" required><br><br>
+        <input type="password" id="password" placeholder="Password" required><br><br>
+        <button type="submit">Login</button>
+    </form>
+
+    <script>
+        document.getElementById('testForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Store login data
+            localStorage.setItem('zenvo_user', JSON.stringify({
+                email: document.getElementById('email').value,
+                isLoggedIn: true,
+                loginTime: new Date().toISOString()
+            }));
+            
+            alert('Login successful! Redirecting...');
+            
+            // Redirect to home page
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>

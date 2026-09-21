@@ -15,55 +15,16 @@ class EVChargingApp {
         this.setMinDateTime();
     }
 
-    loadStations() {
-        this.stations = [
-            {
-                id: 1,
-                name: "City Mall Charging Hub",
-                lat: 17.4065,
-                lng: 78.4772,
-                status: "available",
-                slots: 8,
-                available: 5,
-                price: "₹15/hour",
-                type: "Fast Charging"
-            },
-            {
-                id: 2,
-                name: "Tech Park Station",
-                lat: 17.4239,
-                lng: 78.4738,
-                status: "busy",
-                slots: 6,
-                available: 1,
-                price: "₹12/hour",
-                type: "Standard"
-            },
-            {
-                id: 3,
-                name: "Airport Express Hub",
-                lat: 17.2403,
-                lng: 78.4294,
-                status: "available",
-                slots: 12,
-                available: 8,
-                price: "₹20/hour",
-                type: "Super Fast"
-            },
-            {
-                id: 4,
-                name: "Metro Station Point",
-                lat: 17.4435,
-                lng: 78.3772,
-                status: "available",
-                slots: 4,
-                available: 2,
-                price: "₹10/hour",
-                type: "Standard"
-            }
-        ];
+    async loadStations() {
+        try {
+            const stations = await api.getStations();
+            this.stations = stations.map(s => ({ ...s, id: s._id }));
+        } catch {
+            this.stations = [];
+        }
         this.populateStationsList();
         this.populateStationSelect();
+        if (this.map) this.addStationMarkers();
     }
 
     initMap() {
@@ -273,8 +234,29 @@ class EVChargingApp {
         }
     }
 
-    handleBooking() {
-        alert('Booking functionality would be implemented here');
+    async handleBooking() {
+        const data = {
+            stationId: document.getElementById('stationSelect').value,
+            stationName: document.getElementById('stationSelect').selectedOptions[0]?.text,
+            serviceType: document.querySelector('input[name="serviceType"]:checked')?.value,
+            chargingType: document.getElementById('chargingType').value,
+            bookingTime: document.getElementById('bookingTime').value,
+            duration: parseInt(document.getElementById('duration').value),
+            vehicleModel: document.getElementById('vehicleModel').value,
+            phone: document.getElementById('phoneNumber').value,
+            pickupAddress: document.getElementById('pickupAddress')?.value || ''
+        };
+
+        const token = localStorage.getItem('zenvo_token');
+        if (!token) return window.location.href = 'login.html';
+
+        const res = await api.createBooking(data);
+        if (res.booking) {
+            alert(`Booking confirmed! ₹${res.booking.amount} deducted. Wallet balance: ₹${res.walletBalance}`);
+            window.location.href = 'profile.html';
+        } else {
+            alert(res.message || 'Booking failed');
+        }
     }
 }
 
